@@ -1,4 +1,8 @@
 const nodemailer = require('nodemailer')
+var client = require('twilio')(
+	"AC1ccf148e7ccc82129147b84249e29539",
+	"6ef0a74e7bae4e9fed4887fc6d26c884"
+)
 
 var dateTime = require('node-datetime');
 var dt = dateTime.create();
@@ -9,8 +13,8 @@ console.log(formatted)
 const transporter = nodemailer.createTransport({
     service : 'gmail',
     auth: {
-	user : 'xxxxxxxxxxxx',
-	pass : 'xxxxxxxxxxx'
+	user : 'dinesh10c04@gmail.com',
+	pass : '3158233Dinesh'
     }
 });
 
@@ -23,12 +27,19 @@ let mailOptions = {
 	text : "Logged in to MacBook at " + formatted,
 };
 
-transporter.sendMail(mailOptions, (err, infor)=>{
-	if (error) {
-            console.log(error);
+transporter.sendMail(mailOptions, (err, info)=>{
+	if (err) {
+            console.log(err);
         }
 	
 	console.log("Super")
-        console.log('Message sent: %s', info.messageId);
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 })
+
+client.messages.create ({
+ from:+17865902350,
+ to:'+919843789901',
+ body : "You logged in to your MacBook Air on "  + formatted
+})
+.then((message) => console.log(message.sid))
+.catch((err) => console.log(err));

@@ -1,0 +1,17 @@
+{
+  "name": "total_control",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "firebase": "^4.5.1",
+    "google-cloud": "^0.57.0"
+  }
+}
